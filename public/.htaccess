@@ -1,0 +1,15 @@
+#parses the url and passes it throught to the get super global.
+#multiviews allows calling pages, for example index.
+Options -MultiViews
+RewriteEngine On
+
+#allows rewriting the base for things like index.php.
+RewriteBase /php/mvc/public
+
+#directory checking.
+RewriteCond %{REQUEST_FILENAME} !-d
+#error, file checking.
+RewriteCond %{REQUEST_FILENAME} !-f
+#use rewrite rule to take current url and pass ie through to index.php as query string.
+#note we are using first paramater which is url.
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
