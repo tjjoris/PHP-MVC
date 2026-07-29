@@ -1,0 +1,4 @@
+#prevents navigating manually to child urls.
+Options -Indexes
+
+
