@@ -8,7 +8,19 @@ class App {
 	protected $params = [];
 
 	public function __construct() {
-		print_r($this->parseUrl());
+		//set the parsed url to a var.
+		$url = $this->parseUrl();
+		//check if the controller exists.
+		if (file_exists('../app/controllers/' . $url[0] . '.php')) {
+			//set controller to controller value in url.
+			$this->controller = $url[0]; 
+			//remove it from the array.
+			unset($url[0]);
+		}
+
+		require_once '../app/controllers/' . $this->controller . '.php';
+
+		echo $this->controller;
 	}
 
 	/*
