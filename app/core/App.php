@@ -10,17 +10,33 @@ class App {
 	public function __construct() {
 		//set the parsed url to a var.
 		$url = $this->parseUrl();
+
+		print_r($url);
+
 		//check if the controller exists.
 		if (file_exists('../app/controllers/' . $url[0] . '.php')) {
 			//set controller to controller value in url.
 			$this->controller = $url[0]; 
-			//remove it from the array.
+			//remove it from the array so the parameter passed to the controller only has parameter elements.
 			unset($url[0]);
 		}
 
 		require_once '../app/controllers/' . $this->controller . '.php';
 
-		echo $this->controller;
+
+		//replace this controller with a new instance of this controller, 
+		//creating a new object.
+		$this->controller = new $this->controller;
+		//check if url 1 (method) is set:
+		if (isset($url[1])) {
+			//check if method exists.
+			if (method_exists($this->controller, $url[1])){
+				$this->method = $url[1];
+				//removing element from array so all that's left is parameters for controller.
+				unset($url[1]);
+				print_r($url);
+			}
+		}
 	}
 
 	/*
