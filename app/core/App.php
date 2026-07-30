@@ -11,8 +11,6 @@ class App {
 		//set the parsed url to a var.
 		$url = $this->parseUrl();
 
-		print_r($url);
-
 		//check if the controller exists.
 		if (file_exists('../app/controllers/' . $url[0] . '.php')) {
 			//set controller to controller value in url.
@@ -34,9 +32,15 @@ class App {
 				$this->method = $url[1];
 				//removing element from array so all that's left is parameters for controller.
 				unset($url[1]);
-				print_r($url);
 			}
 		}
+		//note that even if the method is not set, index is the default value and that will be the method called on the controller.
+//set an array even if no parameter values are left over from the url.
+		//it first checks if the array values exist, so if they do not, sets it to an empty array.
+		$this->params = $url? array_values($url) : []; 
+		print_r($this->params);
+		//now actually call the controller method with params.
+		call_user_func_array([$this->controller, $this->method], $this->params);
 	}
 
 	/*
