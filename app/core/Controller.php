@@ -18,4 +18,13 @@ class Controller {
 		echo "<br>$modelFileName";
 		return null;
 	}
+
+	public function view(string $view,  $data = []) {
+		$viewFileName = __DIR__ . '/../views/' . $view . '.php';
+		echo "<br>$viewFileName";
+		if (file_exists($viewFileName)) {
+			echo "<br>view exists";
+			print_r ($data);
+		}
+	}
 }

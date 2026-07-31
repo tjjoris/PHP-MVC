@@ -12,5 +12,7 @@ class Home extends Controller {
 				echo $user->name;
 			}
 		}
+		echo "<br> just before view";
+		$this->view('home/index');
 	}
 }
