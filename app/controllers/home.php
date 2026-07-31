@@ -8,7 +8,7 @@ class Home extends Controller {
 		echo "<br> in home controller, passed: $name <br> and model";
 		if (isset($user)) {
 			if ($user instanceof User) {
-				$user->name = 'Alex';	
+				$user->name = $name; 
 				echo $user->name;
 			}
 		}
