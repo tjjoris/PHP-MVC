@@ -12,14 +12,14 @@ class App {
 		$url = $this->parseUrl();
 
 		//check if the controller exists.
-		if (file_exists('../app/controllers/' . $url[0] . '.php')) {
+		if (isset($url[0]) && file_exists(__DIR__ . '/../controllers/' . $url[0] . '.php')) {
 			//set controller to controller value in url.
 			$this->controller = $url[0]; 
 			//remove it from the array so the parameter passed to the controller only has parameter elements.
 			unset($url[0]);
 		}
 
-		require_once '../app/controllers/' . $this->controller . '.php';
+		require_once __DIR__ . '/../controllers/' . $this->controller . '.php';
 
 
 		//replace this controller with a new instance of this controller, 
