@@ -4,27 +4,28 @@ class Controller {
  *get's passed the model name as a parameter and returns the model script.
  */
 	public function model(string $model): ?Model{
-		echo "berfore require once";
-		echo $model;
+		//echo "berfore require once";
+		//echo $model;
 		$modelFileName = __DIR__ . '/../models/' . $model . '.php';
-		echo "<br> model file name: $modelFileName";
+		//echo "<br> model file name: $modelFileName";
 		if (file_exists($modelFileName)) {
-			echo "<br>model file exists.";
+			//echo "<br>model file exists.";
 			require_once $modelFileName;
-			echo "<br> required file";
+			//echo "<br> required file";
 			return new $model();
 		}
-		echo "model file does not exist";
-		echo "<br>$modelFileName";
+		//echo "model file does not exist";
+		//echo "<br>$modelFileName";
 		return null;
 	}
 
 	public function view(string $view,  $data = []) {
 		$viewFileName = __DIR__ . '/../views/' . $view . '.php';
-		echo "<br>$viewFileName";
+		//echo "<br>$viewFileName";
 		if (file_exists($viewFileName)) {
-			echo "<br>view exists";
-			print_r ($data);
+			//echo "<br>view exists";
+			//print_r ($data);
+			require_once($viewFileName);
 		}
 	}
 }

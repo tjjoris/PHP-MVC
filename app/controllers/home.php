@@ -5,14 +5,14 @@ class Home extends Controller {
 	public function index($name = ""){
 		/* @var User|null $user */
 		$user = $this->model('User');
-		echo "<br> in home controller, passed: $name <br> and model";
+		//echo "<br> in home controller, passed: $name <br> and model";
 		if (isset($user)) {
 			if ($user instanceof User) {
 				$user->name = $name; 
-				echo $user->name;
+				//echo 'user exists' . $user->name;
+				$this->view('home/index', ['name' => $user->name]);
 			}
 		}
-		echo "<br> just before view";
-		$this->view('home/index');
+		//echo "<br> just before view";
 	}
 }

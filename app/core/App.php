@@ -38,7 +38,8 @@ class App {
 //set an array even if no parameter values are left over from the url.
 		//it first checks if the array values exist, so if they do not, sets it to an empty array.
 		$this->params = $url? array_values($url) : []; 
-		print_r($this->params);
+		//print a debug.
+		//print_r($this->params);
 		//now actually call the controller method with params.
 		call_user_func_array([$this->controller, $this->method], $this->params);
 	}
