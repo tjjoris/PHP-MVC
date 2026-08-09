@@ -4,7 +4,13 @@ class Controller {
  *get's passed the model name as a parameter and returns the model script.
  */
 	public function model(string $model): ?Model{
-		//echo "berfore require once";
+		//echo $database;
+		$databaseFileName = __DIR__ . '/../database.php';
+		if (!file_exists($databaseFileName)) {
+			echo "error database file doesn't exist";
+			return null;
+		}
+			echo "database file does exist";
 		//echo $model;
 		$modelFileName = __DIR__ . '/../models/' . $model . '.php';
 		//echo "<br> model file name: $modelFileName";
