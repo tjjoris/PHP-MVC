@@ -11,6 +11,8 @@ class Controller {
 			return null;
 		}
 		require_once $databaseFileName;
+		$db = new Database();
+		$db->getDb();
 		//echo $model;
 		$modelFileName = __DIR__ . '/../models/' . $model . '.php';
 		//echo "<br> model file name: $modelFileName";
