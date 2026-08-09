@@ -10,7 +10,7 @@ class Controller {
 			echo "error database file doesn't exist";
 			return null;
 		}
-			echo "database file does exist";
+		require_once $databaseFileName;
 		//echo $model;
 		$modelFileName = __DIR__ . '/../models/' . $model . '.php';
 		//echo "<br> model file name: $modelFileName";
