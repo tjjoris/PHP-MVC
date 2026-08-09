@@ -19,6 +19,10 @@ class Controller {
 		return null;
 	}
 
+	/*
+	 *get's passed the view name, and data for the view, and requires the view.
+	 data can be accessed form the view.
+	 */
 	public function view(string $view,  $data = []) {
 		$viewFileName = __DIR__ . '/../views/' . $view . '.php';
 		//echo "<br>$viewFileName";
