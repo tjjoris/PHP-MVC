@@ -9,9 +9,7 @@ class Database {
 
 	private $db;
 
-	public function getDb() {
-		$db_host = $_ENV['DB_HOST'];
-		echo "DB host " . $db_host;
+	public function __construct() {
 		$this->connect();
 	}
 
@@ -24,14 +22,26 @@ class Database {
 		try {
 			$this->db = new PDO(
 				"mysql:host=$db_host;
+				port=$db_port;
 				dbname=$db_name;
 				charset=utf8mb4",
 				$db_user,
 				$db_pass
 			);
+		//show errors on failed connection
+		$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		//return associative arrays by default
+		$this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+		//use real prepared statments for added security.
+		$this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 				echo "connected!";
 		} catch (PDOException $e) {
 			die("Database Error: " . $e->getMessage());
 		}
+	}
+
+	public function getDb() 
+	{
+		return $this->db;
 	}
 }
