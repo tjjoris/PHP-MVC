@@ -1,2 +1,8 @@
 #mac file data:
 .DS_Store
+
+#private files:
+.env
+
+#vendor files
+/vendor
