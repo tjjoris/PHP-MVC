@@ -4,15 +4,6 @@ class Controller {
  *get's passed the model name as a parameter and returns the model script.
  */
 	public function model(string $model): ?Model{
-		//echo $database;
-		$databaseFileName = __DIR__ . '/../database.php';
-		if (!file_exists($databaseFileName)) {
-			echo "error database file doesn't exist";
-			return null;
-		}
-		require_once $databaseFileName;
-		$db = new Database();
-		$db->getDb();
 		//echo $model;
 		$modelFileName = __DIR__ . '/../models/' . $model . '.php';
 		//echo "<br> model file name: $modelFileName";
