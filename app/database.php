@@ -7,7 +7,7 @@
 
 class Database {
 
-	private $db;
+	private PDO $db;
 
 	public function __construct() {
 		$this->connect();
@@ -34,7 +34,6 @@ class Database {
 		$this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 		//use real prepared statments for added security.
 		$this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-				echo "connected!";
 		} catch (PDOException $e) {
 			die("Database Error: " . $e->getMessage());
 		}
@@ -43,5 +42,9 @@ class Database {
 	public function getDb() 
 	{
 		return $this->db;
+	}
+
+	public function returnHello() {
+		return "joylo";
 	}
 }

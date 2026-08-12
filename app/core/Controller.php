@@ -13,7 +13,7 @@ class Controller {
 			//echo "<br> required file";
 			return new $model();
 		}
-		//echo "model file does not exist";
+		echo "model file does not exist";
 		//echo "<br>$modelFileName";
 		return null;
 	}

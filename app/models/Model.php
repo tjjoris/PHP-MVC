@@ -1,7 +1,7 @@
 <?php
-
+//Model.php
 class Model {
-
+	private Database $dbConnector;
 	public function __construct () {
 		//echo $database;
 		$databaseFileName = __DIR__ . '/../database.php';
@@ -10,7 +10,10 @@ class Model {
 			return null;
 		}
 		require_once $databaseFileName;
-		$db = new Database();
-		$db->getDb();
+		$this->dbConnector = new Database();
+	}
+
+	public function getDb() {
+		return $this->dbConnector->getDb();
 	}
 }
