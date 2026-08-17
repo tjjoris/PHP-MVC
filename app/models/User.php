@@ -8,7 +8,7 @@ class User extends Model{
 	public string $name;
 
 	public function getName() {
-		$stmt = $this->getDb()->query("SELECT name FROM customer WHERE id = 1");
+		$stmt = $this->getDb()->query("SELECT name FROM customers WHERE id = 1");
 		$row = $stmt->fetch();
 		$this->name = $row['name'] ?? '';
 		return $this->name;
