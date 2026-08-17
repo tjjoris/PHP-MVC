@@ -10,4 +10,4 @@ $dotenv->load();
 //require two core classes needed
 require_once __DIR__ . '/core/App.php';
 require_once __DIR__ . '/core/Controller.php';
-require_once __DIR__ . '/models/Model.php';
+require_once __DIR__ . '/core/Model.php';
