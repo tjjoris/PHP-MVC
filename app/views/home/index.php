@@ -2,5 +2,5 @@
 welcome page
 </h1>
 <p>
-Hello <?=$data['name']?>
+Hello World <?=$data['name']?>
 </p>
