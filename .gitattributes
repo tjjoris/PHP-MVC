@@ -1,0 +1,2 @@
+#never automatically merge these files:
+public/.htaccess merge=ours
