@@ -14,7 +14,7 @@ class Home extends Controller {
 			if ($user instanceof User) {
 				echo "first param is " . $name .  " yes ";
 				//$user->name = $name; 
-				$this->view('home/index', ['name' => $user->getName()]);
+				$this->view('home/index', ['names' => $user->getAllNames()]);
 			}
 		}
 		//echo "<br> just before view";
