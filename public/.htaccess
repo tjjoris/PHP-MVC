@@ -6,7 +6,7 @@ RewriteEngine On
 #allows rewriting the base for things like index.php.
 # Use the deployed base path. Change this to match your server folder
 # (e.g. 'php-mvc' vs 'php/mvc').
-RewriteBase /php-mvc/public
+RewriteBase /php/mvc/public
 
 #directory checking.
 RewriteCond %{REQUEST_FILENAME} !-d

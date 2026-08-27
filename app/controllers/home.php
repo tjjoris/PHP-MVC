@@ -19,4 +19,28 @@ class Home extends Controller {
 		}
 		//echo "<br> just before view";
 	}
+
+	/*
+	 * store method for storing data to the database.	
+	 */
+	public function store() {
+		echo "in store";
+		$value = $_POST['user-name'] ?? '';
+		$user = $this->model('User');
+		if (isset($user)) {
+			if ($user instanceof User) {
+				echo "value is " . $value;
+				$user->create($value);
+			}
+		}
+	}
+	/*
+	 * Other CRUD operations include:
+	 * create: Create a new record from a GET request.
+	 * store: Add a new record from a POST request.
+	 * show($id): Read a specific record.
+	 * edit($id): edit a specific record from a GET request.
+	 * update($id): edit a sepecidfic record from a PUT/PATCH requst.
+	 * destroy($id): delete a speific record from a DELETE request.
+	 */
 }
