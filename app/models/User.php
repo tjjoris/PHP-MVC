@@ -6,7 +6,23 @@
  */
 class User extends Model{
 	public string $name;
+	public array $names = [];
 
+	/*
+	 * get all function to return all names.
+	 * PDO::FETCH_COLUMN only returns the first column of each row.
+	 * without PDO::FETCH_COLUMN it returns an array of arrays.
+	 */
+	public function getAllNames() {
+		$sql = "SELECT name FROM customers";
+		$stmt = $this->getDb()->prepare($sql);
+		//execute sql, and if successfull store names and return them.
+    		if ($stmt->execute()) {
+        		$this->names = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        		return $this->names;
+    		}
+    		return []; // or throw an exception
+	}
 	public function getName() {
 		$stmt = $this->getDb()->query("SELECT name FROM customers WHERE id = 1");
 		$row = $stmt->fetch();

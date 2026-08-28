@@ -14,7 +14,7 @@ class Home extends Controller {
 			if ($user instanceof User) {
 				echo "first param is " . $name .  " yes ";
 				//$user->name = $name; 
-				$this->view('home/index', ['name' => $user->getName()]);
+				$this->view('home/index', ['names' => $user->getAllNames()]);
 			}
 		}
 		//echo "<br> just before view";
@@ -24,13 +24,13 @@ class Home extends Controller {
 	 * store method for storing data to the database.	
 	 */
 	public function store() {
-		echo "in store";
 		$value = $_POST['user-name'] ?? '';
 		$user = $this->model('User');
 		if (isset($user)) {
 			if ($user instanceof User) {
-				echo "value is " . $value;
 				$user->create($value);
+				$this->view('home/index', ['names' => $user->getAllNames()]);
+
 			}
 		}
 	}
