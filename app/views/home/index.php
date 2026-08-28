@@ -26,7 +26,7 @@ submit
 </div>
 </p>
 <script type='module'>
-    import { AddNamesDomFromArray } from "/php/mvc/public/javascript/addNamesDomFromArray.js";
+    import { AddNamesDomFromArray } from "./javascript/addNamesDomFromArray.js";
 AddNamesDomFromArray(<?= json_encode($data['names'])?>);
 </script>
 </body>
